@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>introduccion MongoDB</title>
+</head>
+
+<body>
+    <section class="mysql">
+        <h2>Ejercicios MySQL</h2>
+        <div class="ejercicios">
+            <h3>
+                1. Listado de todos los usuarios con solo los nombres, apellidos y edad, que tengan 20 años de edad.
+            </h3>
+            <p>
+                <code>
+                    SELECT nombres, apellidos, edad FROM users
+                    WHERE edad = 20;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                2. Listado de todas las mujeres en la base de datos que tengan entre 20 y 30 años de edad.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users 
+                    WHERE genero = "M" AND edad > 20 AND edad < 30;  
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                3. Quién es la persona con menos edad de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    ORDER BY edad ASC 
+                    LIMIT 1;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                4. Cuantos usuarios hay registrados en la base de datos.
+            </h3>
+            <p>
+                <code>
+                    SELECT id FROM users
+                    ORDER BY id DESC
+                    LIMIT 1;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                5. Traer los 5 primeros usuarios de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    LIMIT 5;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                6. Traer los 10 últimos usuarios de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    ORDER BY id DESC
+                    LIMIT 10;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                7. Listar usuarios que su correo finalice en .net
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE correo LIKE "%.net";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                8. Listar usuarios no vivan en colombia.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE pais != "colombia";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                9. Listar usuarios que no vivan en ecuador y panamá.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE pais != "panama" AND pais != "ecuador";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                10. Cuantos(numero) usuarios son de colombia y les gusta el rock.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE pais = "colombia" AND musica = "rock";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                11. Actualizar el género musical de todos los usuarios de la base de datos de "metal" a "carranga".
+            </h3>
+            <p>
+                <code>
+                    UPDATE users
+                    SET musica = "carranga"
+                    WHERE musica = "metal";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                12. Listado de hombres que les guste la "carranga" sean de colombia y tengan entre 10 y 20 años de edad.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE musica = "carranga" AND pais = "colombia" AND edad > 10 AND edad < 20;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                13. Actualizar a todos los usuarios que tengan 99 años, su nuevo género musical favorito será la "carranga".
+            </h3>
+            <p>
+                <code>
+                    UPDATE users
+                    SET musica = "carranga"
+                    WHERE edad = 99;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                14. Listar todos los usuarios que su nombre inicie con "a","A". 
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE nombres LIKE "A%" AND nombres LIKE "a%";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                15. Listar todos los usuarios que su apellido finalice en "z","Z".
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE apellidos LIKE "%Z" AND apellidos LIKE "%z";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                16. Actualizar los usuarios que tengan 50 años de edad su nuevo género musical será NULL.
+            </h3>
+            <p>
+                <code>
+                    ALTER TABLE users 
+                    MODIFY musica VARCHAR(25) NULL
+                    
+                    UPDATE users
+                    SET musica = NULL
+                    WHERE edad = 50;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+               17. Listar todos los usuarios que su género musical sea igual a NULL.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users WHERE edad = 50;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                18. Cual es el resultado de la suma de todas las edades de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    SELECT SUM(edad) as edad FROM users;
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                19. Cuantos usuarios tenemos registrados de "ecuador".
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE pais = "ecuador";
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                20. Cuántos usuarios son de Colombia y les gusta el vallenato.
+            </h3>
+            <p>
+                <code>
+                    SELECT * FROM users
+                    WHERE pais = "colombia" AND musica = "vallenato";
+                </code>
+            </p>
+
+        </div>
+    </section>
+    <hr>
+    <section class="mongodb">
+        <h2>Ejercicios MongoDB</h2>
+        <div class="ejercicios">
+            <h3>
+                1. Listado de todos los usuarios con solo los nombres, apellidos y edad, que tengan 20 años de edad.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        { edad: 20 },
+                        { _id: 0, nombres: 1, apellidos: 1, edad: 1 }
+                    ); 
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                2. Listado de todas las mujeres en la base de datos que tengan entre 20 y 30 años de edad.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            genero: "M",
+                            edad: {
+                                $gte: 20,
+                                $lte: 30
+                            }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                3. Quién es la persona con menos edad de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find().sort({ edad: 1 }).limit(1);
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                4. Cuantos usuarios hay registrados en la base de datos.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.count();
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                5. Traer los 5 primeros usuarios de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find().limit(5);
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                6. Traer los 10 últimos usuarios de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find().sort({ id: -1 }).limit(10);
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                7. Listar usuarios que su correo finalice en .net
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            correo:
+                                { $regex: /\.net/ }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                8. Listar usuarios no vivan en colombia.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            pais:
+                                { $ne: "colombia" }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                9. Listar usuarios que no vivan en ecuador y panamá.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            pais:
+                                { $nin: ["ecuador", "panama"] }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                10. Cuantos(numero) usuarios son de colombia y les gusta el rock.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.count(
+                        {
+                            pais: "colombia",
+                            musica: "rock"
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                11. Actualizar el género musical de todos los usuarios de la base de datos de "metal" a "carranga".
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.updateMany(
+                        { musica: "metal" },
+                        {
+                            $set: {
+                                musica: "carranga"
+                            }
+                        }
+                    );
+
+                    use('users');
+                    db.users.find(
+                        {
+                            musica: "carranga"
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                12. Listado de hombres que les guste la "carranga" sean de colombia y tengan entre 10 y 20 años de edad.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            musica: "carranga",
+                            pais: "colombia",
+                            edad: {
+                                $gte: 10,
+                                $lte: 20
+                            }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                13. Actualizar a todos los usuarios que tengan 99 años, su nuevo género musical favorito será la "carranga".
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.updateMany(
+                        { edad: 99 },
+                        {
+                            $set: {
+                                musica: "carranga"
+                            }
+                        }
+                    );
+
+                    use('users');
+                    db.users.find(
+                        {
+                            edad: 99
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                14. Listar todos los usuarios que su nombre inicie con "a","A". 
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            nombres: {
+                                $regex: /^[Aa]/
+                            }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                15. Listar todos los usuarios que su apellido finalice en "z","Z".
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            apellidos: {
+                                $regex: /[Zz]$/
+                            }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                16. Actualizar los usuarios que tengan 50 años de edad su nuevo género musical será NULL.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.updateMany(
+                        { edad: 50 },
+                        {
+                            musica: null
+                        }
+                    );
+
+                    use('users');
+                    db.users.find(
+                        {
+                            edad: 50
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+               17. Listar todos los usuarios que su género musical sea igual a NULL.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.find(
+                        {
+                            musica: null
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                18. Cual es el resultado de la suma de todas las edades de la base de datos.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.aggregate(
+                        {
+                            $group: {
+                                _id: null,
+                                sumaEdad: {
+                                    $sum: "$edad"
+                                }
+                            }
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                19. Cuantos usuarios tenemos registrados de "ecuador".
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.count(
+                        {
+                            pais: "ecuador"
+                        }
+                    );
+                </code>
+            </p>
+        </div>
+
+        <div class="ejercicios">
+            <h3>
+                20. Cuántos usuarios son de Colombia y les gusta el vallenato.
+            </h3>
+            <p>
+                <code>
+                    use('users');
+                    db.users.count(
+                        {
+                            pais: "colombia",
+                            musica: "vallenato"
+                        }
+                    );
+                </code>
+            </p>
+
+        </div>
+    </section>
+    
+
+</body>
+
+</html>
